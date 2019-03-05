@@ -3,6 +3,7 @@
 
 void EERPOM_Log_Init(void)
 {
+
 	uint8_t digits_num;//个位数
 	uint8_t ten_digits_num;//十位数
 	uint16_t hundreds_digits_num;	//百位数
@@ -16,7 +17,7 @@ void EERPOM_Log_Init(void)
 	uint16_t min_address;				
 	uint32_t temple_num;	
 	uint32_t max_num;	
-  
+	
 	digits_num = 0;
 	ten_digits_num = 0;
 	hundreds_digits_num = 0;
@@ -28,7 +29,6 @@ void EERPOM_Log_Init(void)
 		temple_num = 0;
 		for(j = 0; j < EERPOM_LOG_SERIAL_NUM_LEN; j++)//读取当前序号数据-3byte
 			temple_num = temple_num <<8 | AT24CXX_Read_One_Byte(i+j);			
-		
 		if((digits_num < temple_num) && (temple_num < 10))//获取个位数据最大值和地址
 		{
 			digits_num = temple_num;
@@ -58,7 +58,6 @@ void EERPOM_Log_Init(void)
 	{
 		Sys_EPROM.Serial_Num = 1;
 		Sys_EPROM.Write_Log_Address = Sys_EPROM.Log_Start_Address;
-		printf("¿ÕÉÈÇø\r\n");
 		return;					
 	}
 	
